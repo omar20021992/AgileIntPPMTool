@@ -14,10 +14,10 @@ public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotBlank(message = "name required")
+    @NotBlank(message = "Name is required")
     private String projectName;
-    @NotBlank(message = "identifier required")
-    @Size(min=4, max=5, message = "use 4 to 5 characters")
+    @NotBlank(message = "Identifier is required")
+    @Size(min=4, max=5, message = "Use 4 or 5 characters")
     @Column(updatable =  false, unique = true)
     private String projectIdentifier;
     @NotBlank(message = "description required")

@@ -12,34 +12,34 @@ public class ProjectService {
     @Autowired
     private ProjectRepository projectRepository;
 
-    public Project saveOrUpdateProject(Project project){
+    public Project saveOrUpdateProject(Project project) {
 
-        //Logic
+
 
         try {
-        project.setProjectIdentifier(project.getProjectIdentifier().toUpperCase());
-        return projectRepository.save(project);
-    }
-        catch (Exception e){
-            throw new ProjectIdException("Project ID '"+project.getProjectIdentifier().toUpperCase()+"' already exist");
+            project.setProjectIdentifier(project.getProjectIdentifier().toUpperCase());
+            return projectRepository.save(project);
+        } catch (Exception e) {
+            throw new ProjectIdException("Project ID '" + project.getProjectIdentifier().toUpperCase() + "' already exist");
         }
     }
 
-    public Project findProjectByIdentifier(String projectId){
+    public Project findProjectByIdentifier(String projectId) {
         Project project = projectRepository.findByProjectIdentifier(projectId.toUpperCase());
 
         if (project == null) throw new ProjectIdException("Project  doesnt exist");
         return project;
     }
 
-    public Iterable<Project> findAllProjects(){
+    public Iterable<Project> findAllProjects() {
+
         return projectRepository.findAll();
     }
 
-    public void deleteProjectByIdentifier(String projectid){
+    public void deleteProjectByIdentifier(String projectid) {
         Project project = projectRepository.findByProjectIdentifier(projectid.toUpperCase());
 
-        if (project == null) throw new ProjectIdException("Project '" +projectid+ "' doesnt exist");
+        if (project == null) throw new ProjectIdException("Project '" + projectid + "' doesnt exist");
 
         projectRepository.delete(project);
 

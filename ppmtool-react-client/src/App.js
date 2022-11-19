@@ -13,7 +13,7 @@ function App() {
      <Router>
       <div className="App">
         <Header />
-        <Route exact path="/Dashboard" component = {Dashboard } />
+        <Route exact path="/Dashboard" component = { Dashboard } />
         <Route exact path="/addProject" component = {AddProject } />
        </div>
      </Router>
