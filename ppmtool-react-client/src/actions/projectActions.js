@@ -58,7 +58,7 @@ export const deleteProject = id => async dispatch => {
     });
    }
 
-   //else do nothing;
+   //else do nothin;
    
 }
 

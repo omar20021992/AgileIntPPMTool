@@ -16,7 +16,7 @@ import { deleteProject } from '../../actions/projectActions';
       <div className="row">
         <div className="col-2">
           <span className="mx-auto">{project.projectIdentifier}</span>
-        </div>
+         </div>
         <div className="col-lg-6 col-md-4 col-8">
           <h3>{project.projectName}</h3>
           <p>{project.description}</p>
