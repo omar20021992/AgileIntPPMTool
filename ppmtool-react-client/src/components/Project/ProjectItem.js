@@ -7,7 +7,7 @@ import { deleteProject } from '../../actions/projectActions';
  class ProjectItem extends Component {
 
   onDeleteClick = id => {
-    this.props.deleteProject(id);
+    this.props.deleteProject(id); 
   }
   render() {
     const { project } = this.props;

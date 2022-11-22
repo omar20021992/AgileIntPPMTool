@@ -6,7 +6,7 @@ import classnames from "classnames";
 
  class UpdateProject extends Component {
         
-    //set a state
+    //setState
     constructor(){
       super()
 
