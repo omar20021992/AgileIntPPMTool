@@ -1,9 +1,6 @@
 package io.agileintelligence.ppmtool.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Backlog {
@@ -15,6 +12,10 @@ public class Backlog {
     private String projectIdentifier;
 
     //OneToOne With Project
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="project_Id", nullable = false)
+    //
+    private Project project;
 
     // oneToMany projectTasks
 
@@ -45,5 +46,8 @@ public class Backlog {
 
     public void setProjectIdentifier(String projectIdentifier) {
         this.projectIdentifier = projectIdentifier;
+    }
+
+    public void setProject(Project project) {
     }
 }
