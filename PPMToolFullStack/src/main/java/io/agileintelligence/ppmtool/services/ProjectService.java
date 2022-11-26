@@ -24,15 +24,15 @@ public class ProjectService {
 
             if(project.getId()==null){
                 Backlog backlog = new Backlog();
-                project.setBacklog(backlog);
-                backlog.setProject(project);
-                backlog.setProjectIdentifier(project.getProjectIdentifier().toUpperCase());
+               project.setBacklog(backlog);
+               backlog.setProject(project);
+               backlog.setProjectIdentifier(project.getProjectIdentifier().toUpperCase());
             }
 
             if(project.getId()!=null){
                 project.setBacklog(backlogRepository.findByProjectIdentifier(project.getProjectIdentifier().toUpperCase()));
             }
-            
+
             return projectRepository.save(project);
         } catch (Exception e) {
             throw new ProjectIdException("Project ID '" + project.getProjectIdentifier().toUpperCase() + "' already exist");
