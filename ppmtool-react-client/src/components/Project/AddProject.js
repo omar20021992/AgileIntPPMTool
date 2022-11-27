@@ -45,7 +45,7 @@ import classnames from 'classnames';
           end_date: this.state.end_date
         };
 
-        console.log(newProject);
+        
     
          this.props.createProject(newProject, this.props.history)
      }
