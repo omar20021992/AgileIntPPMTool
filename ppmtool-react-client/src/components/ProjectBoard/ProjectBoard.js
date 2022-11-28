@@ -8,7 +8,7 @@ import { getBacklog } from "../../actions/backlogActions";
 class ProjectBoard extends Component {
 //constructor to handle errors
 
-constractor(){
+constructor(){
   super();
   this.state={
     errors:{}
@@ -20,9 +20,46 @@ constractor(){
     this.props.getBacklog(id);
   }
 
+  componentWillReceiveProps(nextProps){
+    if (nextProps.errors){
+      this.setState({errors: nextProps.errors})
+    }
+  }
+
   render() {
     const { id } = this.props.match.params;
     const {project_tasks} = this.props.backlog;
+    const { errors } = this.state;
+
+    let BoardContent;
+
+    const boardAlgorithm = (errors, project_tasks) => {
+      if (project_tasks.length === 0) {
+        
+        if (errors.projectNotFound) {
+          return (
+            <div className="alert alert-danger text-center" role="alert">
+              {errors.projectNotFound}
+            </div>
+          );
+        } else {
+          return (
+            <div className="alert alert-info text-center" role="alert">
+              No Project Tasks on this board
+            </div>
+          );
+        }
+      } else {
+        return <Backlog project_tasks_prop={project_tasks} />;
+      }
+    };
+
+    BoardContent = boardAlgorithm(errors, project_tasks);
+
+
+
+
+
     return (
       <div className="container">
         <Link to={`/addProjectTask/${id}`} className="btn btn-primary mb-3">
@@ -30,7 +67,7 @@ constractor(){
         </Link>
         <br />
         <hr />
-        <Backlog project_tasks_prop = {project_tasks} />
+        {BoardContent}
         
       </div>
     );
@@ -45,7 +82,8 @@ ProjectBoard.propTypes = {
  
 const mapStateToProps = state => ({
   backlog: state.backlog,
-  errors : state.errors
+  backlog: state.backlog,
+  errors: state.errors 
 });
 
 export default connect(mapStateToProps,{ getBacklog }
