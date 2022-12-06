@@ -1,10 +1,10 @@
 package io.agileintelligence.ppmtool.payload;
 
-public class JWTLoginSucessResponse {
+public class JWTLoginSucessReponse {
     private boolean success;
     private String token;
 
-    public JWTLoginSucessResponse(boolean success, String token) {
+    public JWTLoginSucessReponse(boolean success, String token) {
         this.success = success;
         this.token = token;
     }

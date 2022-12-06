@@ -1,8 +1,7 @@
 package io.agileintelligence.ppmtool.web;
 
 import io.agileintelligence.ppmtool.domain.User;
-import io.agileintelligence.ppmtool.payload.JWTLoginSucessResponse;
-import io.agileintelligence.ppmtool.payload.JWTLoginSucessResponse;
+import io.agileintelligence.ppmtool.payload.JWTLoginSucessReponse;
 import io.agileintelligence.ppmtool.payload.LoginRequest;
 import io.agileintelligence.ppmtool.security.JwtTokenProvider;
 import io.agileintelligence.ppmtool.services.MapValidationErrorService;
@@ -61,7 +60,7 @@ public class UserController {
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = TOKEN_PREFIX +  tokenProvider.generateToken(authentication);
 
-        return ResponseEntity.ok(new JWTLoginSucessResponse(true, jwt));
+        return ResponseEntity.ok(new JWTLoginSucessReponse(true, jwt));
     }
 
     @PostMapping("/register")

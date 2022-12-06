@@ -1,5 +1,6 @@
 package io.agileintelligence.ppmtool.domain;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -8,27 +9,27 @@ import java.util.List;
 
 @Entity
 public class Backlog {
-   
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Integer PTSequence=0;
+    private Integer PTSequence = 0;
     private String projectIdentifier;
 
-    //OneToOne With Project
+    //OneToOne with project
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="project_id",nullable = false)
     @JsonIgnore
     private Project project;
 
-    // oneToMany projectTasks
+    //OneToMany projecttasks
     @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER, mappedBy = "backlog", orphanRemoval = true)
     private List<ProjectTask> projectTasks = new ArrayList<>();
+    //Cascade REFRESH
+    //ORPHAN REMOVAL
 
 
-
-    public Backlog(){
-
+    public Backlog() {
     }
 
     public Long getId() {
@@ -70,5 +71,6 @@ public class Backlog {
     public void setProjectTasks(List<ProjectTask> projectTasks) {
         this.projectTasks = projectTasks;
     }
-}
 
+
+}
