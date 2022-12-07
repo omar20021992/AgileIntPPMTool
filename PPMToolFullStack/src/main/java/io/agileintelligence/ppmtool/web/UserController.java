@@ -1,5 +1,4 @@
 package io.agileintelligence.ppmtool.web;
-
 import io.agileintelligence.ppmtool.domain.User;
 import io.agileintelligence.ppmtool.payload.JWTLoginSucessReponse;
 import io.agileintelligence.ppmtool.payload.LoginRequest;
