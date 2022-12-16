@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import classnames from "classnames";
 import { addProjectTask } from "../../../actions/backlogActions";
 import PropTypes from "prop-types";
- 
+
 class AddProjectTask extends Component {
   constructor(props) {
     super(props);
@@ -31,7 +31,7 @@ class AddProjectTask extends Component {
 
   // on change
   onChange(e) {
-    this.setState({[e.target.name]: e.target.value });
+    this.setState({ [e.target.name]: e.target.value });
   }
   //on submit
   onSubmit(e) {
@@ -44,7 +44,7 @@ class AddProjectTask extends Component {
       priority: this.state.priority,
       dueDate: this.state.dueDate
     };
-    console.log(newTask );
+
     this.props.addProjectTask(
       this.state.projectIdentifier,
       newTask,
@@ -55,7 +55,6 @@ class AddProjectTask extends Component {
   render() {
     const { id } = this.props.match.params;
     const { errors } = this.state;
-
     return (
       <div className="add-PBI">
         <div className="container">
@@ -151,8 +150,7 @@ const mapStateToProps = state => ({
   errors: state.errors
 });
 
-
 export default connect(
-  mapStateToProps, 
+  mapStateToProps,
   { addProjectTask }
 )(AddProjectTask);
