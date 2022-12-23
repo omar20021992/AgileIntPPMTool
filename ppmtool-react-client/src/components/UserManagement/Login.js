@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import classnames from "classnames";
 import { login } from "../../actions/securityActions";
-
 class Login extends Component {
   constructor() {
     super();
@@ -15,6 +14,11 @@ class Login extends Component {
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
+
+    componentDidMount(){
+      if(this.props.security.validToken){
+        this.props.history.push("/dashboard");
+      }};
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.security.validToken) {
@@ -32,10 +36,8 @@ class Login extends Component {
       username: this.state.username,
       password: this.state.password
     };
-
     this.props.login(LoginRequest);
   }
-
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
@@ -99,7 +101,6 @@ const mapStateToProps = state => ({
   security: state.security,
   errors: state.errors
 });
-
 export default connect(
   mapStateToProps,
   { login }
